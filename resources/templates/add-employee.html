@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Registration</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-1 border-bottom">
+        <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+            <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+        </a>
+        <div class="col-md-3 text-end">
+            <form>
+                <a href="/logout" class="nav-link active">
+                    <button type="button" class="btn btn-primary">Sign-out</button>
+                </a>
+            </form>
+        </div>
+    </header>
+</head>
+<body>
+<div class="row">
+    <div class="col-lg-auto">
+        <div class="d-flex flex-column flex-shrink-0 p-2 bg-light" style="width: 280px;">
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+                <svg class="bi pe-none me-2" width="30" height="32"><use xlink:href="#bootstrap"></use></svg>
+                <span class="fs-4">Sidebar</span>
+            </a>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-5">
+                <li class="nav-item">
+                    <a href="/home" class="nav-link link-dark">
+                        <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href=""></use></svg>
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="/add" class="nav-link active" aria-current="page">
+                        <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+                        Add Employer
+                    </a>
+                </li>
+                <li>
+                    <a href="/list_users" class="nav-link link-dark">
+                        <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
+                        List-Employers
+                    </a>
+                </li>
+                <li>
+                    <a href="/about" class="nav-link link-dark">
+                        <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+                        About
+                    </a>
+                </li>
+            </ul>
+            <br><br><br><br><br><br><br><br><br>
+            <hr>
+        </div>
+    </div>
+    <div class="col">
+        <div class="row text-center py-lg-5">
+            <div class="container mt-5 mb-5">
+                <h1>Add employer</h1><br>
+                <form th:action="@{/process_register}" method="post"
+                style="max-width: 1000px; margin: 0;"
+                th:object="${employees}">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="m-3">
+                                <div class="form-group row">
+                                    <label class="col-form-label col-4">E-mail</label>
+                                    <div class="col-8">
+                                        <input type="email" class="form-control" th:field="*{email}" required/>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-group row">
+                                    <label class="col-form-label col-4">Password</label>
+                                    <div class="col-8">
+                                        <input type="password" class="form-control" th:field="*{password}" required
+                                               minlength="6" maxlength="10"/>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-group row">
+                                    <label class="col-form-label col-4">First Name</label>
+                                    <div class="col-8">
+                                        <input type="text" class="form-control" th:field="*{firstName}" required
+                                               minlength="2" maxlength="20"/>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-group row">
+                                    <label class="col-form-label col-4">Last Name</label>
+                                    <div class="col-8">
+                                        <input type="text" class="form-control" th:field="*{lastName}" required
+                                               minlength="2" maxlength="20"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="m-3 ">
+                                <div class="form-group row">
+                                    <label class="col-form-label col-4">Adress</label>
+                                    <div class="col-8">
+                                        <input type="text" class="form-control" th:field="*{adress}" required/>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-group row">
+                                    <label class="col-form-label col-4">Occupation</label>
+                                    <div class="col-8">
+                                        <input type="text" class="form-control" th:field="*{occupation}" required
+                                               minlength="6" maxlength="10"/>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-group row">
+                                    <label class="col-form-label col-4">Salary</label>
+                                    <div class="col-8">
+                                        <input type="text" class="form-control" th:field="*{salary}" required
+                                               minlength="2" maxlength="20"/>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-group row">
+                                    <label class="col-form-label col-4">Phone number</label>
+                                    <div class="col-8">
+                                        <input type="text" class="form-control" th:field="*{mobilephone}" required
+                                               minlength="2" maxlength="20"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-primary">Save all</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<footer class="py-3 my-1"><br>
+    <p class="text-center text-muted">© 2023 Jetbrains, Company</p>
+</footer>
+</html>
